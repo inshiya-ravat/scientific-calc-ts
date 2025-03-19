@@ -1,12 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scientific</title>
-    <script src="./src/index.ts"></script>
-</head>
-<body>
-    TS
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="./assets/logo.svg" />
+    <link rel="stylesheet" href="index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scientific Calculator</title>
+  </head>
+  <body>
+    <main>
+      <!-- displays result  -->
+      <section class="display">
+        <h1 id="ans"></h1>
+      </section>
+      <!-- degree and function expression  -->
+      <section class="deg">
+        <div>
+          <p>DEG</p>
+          <p>F-E</p>
+        </div>
+      </section>
+      <!-- memory operations   -->
+      <section class="memory-operation">
+        <div id="memory-op">
+          <button
+            name="mc"
+            class="light"
+            title="Clear Memory"
+            aria-label="clear the memory space"
+          >
+            MC
+          </button>
+          <button
+            name="mr"
+            class="light"
+            title="Read Memory"
+            aria-label="read the stored value from memory"
+          >
+            MR
+          </button>
+          <button
+            name="m+"
+            title="Add Result"
+            aria-label="adds the result of the current calculation to the value in the memory cell"
+          >
+            M+
+          </button>
+          <button
+            name="m-"
+            title="Substract Result"
+            aria-label="subtracts the result of the current calculation from the value in the memory cell"
+          >
+            M-
+          </button>
+          <button
+            name="ms"
+            title="Save Result"
+            aria-label="Saves the result of the calculation to memory"
+          >
+            MS
+          </button>
+        </div>
+      </section>
+      <!-- trignometric functions, floor and ceil  -->
+      <section class="functions">
+        <div>
+          <img
+            src="./assets/trignometry.svg"
+            alt="trignometry"
+            aria-hidden="true"
+          />
+          <select id="trignometry">
+            <option selected disabled hidden id="trigno_func">
+              Trignometry
+            </option>
+            <option>sin(x)</option>
+            <option>cos(x)</option>
+            <option>tan(x)</option>
+          </select>
+        </div>
+        <div>
+          <img src="./assets/function.svg" alt="functions" aria-hidden="true" />
+          <select id="function">
+            <option selected disabled hidden id="func">Functions</option>
+            <option>floor(x)</option>
+            <option>ceil(x)</option>
+          </select>
+        </div>
+        <div>
+          <img id="history" src="./assets/history.svg" alt="history" />
+        </div>
+      </section>
+      <!-- key operations  -->
+      <section class="keys">
+        <button name="2nd" class="btn history-hide">2<sup>nd</sup></button>
+        <button name="pi" class="btn history-hide">𝜋</button>
+        <button name="e" class="btn history-hide">e</button>
+        <button name="C" class="btn history-hide">C</button>
+        <button name="del" class="btn del">
+          <img src="./assets/delete.svg" alt="delete" />
+        </button>
+        <button name="sqr" class="btn history-hide">x<sup id="sqr__change">2</sup></button>
+        <button name="div-by-1" class="btn history-hide">1/x</button>
+        <button name="abs" class="btn history-hide">|x|</button>
+        <button name="exp" class="btn history-hide">exp</button>
+        <button name="%" class="btn">mod</button>
+        <button name="sqrt" class="btn history-hide">
+          <sup id="sqrt__change">2</sup>√x
+        </button>
+        <button name="(" class="btn history-hide">(</button>
+        <button name=")" class="btn history-hide">)</button>
+        <button name="factorial" class="btn history-hide">n!</button>
+        <button name="/" class="btn">÷</button>
+        <button name="x-pow-y" class="btn history-hide">x<sup>y</sup></button>
+        <button name="7" class="numbers history-hide">7</button>
+        <button name="8" class="numbers history-hide">8</button>
+        <button name="9" class="numbers history-hide">9</button>
+        <button name="*" class="btn">X</button>
+        <button name="10-pow-x" class="btn history-hide">10<sup>x</sup></button>
+        <button name="4" class="numbers history-hide">4</button>
+        <button name="5" class="numbers history-hide">5</button>
+        <button name="6" class="numbers history-hide">6</button>
+        <button name="-" class="btn">-</button>
+        <button name="log" class="btn history-hide">log</button>
+        <button name="1" class="numbers history-hide">1</button>
+        <button name="2" class="numbers history-hide">2</button>
+        <button name="3" class="numbers history-hide">3</button>
+        <button name="+" class="btn">+</button>
+        <button name="ln" class="btn history-hide">ln</button>
+        <button name="+/-" class="numbers history-hide">+/-</button>
+        <button name="0" class="numbers history-hide">0</button>
+        <button name="." class="numbers history-hide">.</button>
+        <button name="calc" id="calculate">=</button>
+        <!-- history section  -->
+        <div class="history">
+          <ul id="history_list"></ul>
+        </div>
+      </section>
+    </main>
+  </body>
+  <script type="module" src="./src/index.ts"></script>
 </html>

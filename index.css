@@ -1,0 +1,151 @@
+:root{
+    --space: 10px;
+    --extra-space: 15px;
+    --font: "Poppins";
+    --lightblue : rgb(152, 212, 250);
+    --lightblue-hover : rgb(126, 202, 250);
+    --bg-btn: rgb(250, 250, 250);
+    --font-light: rgb(199, 198, 198);
+    --bg: rgb(243, 240, 240);
+    --danger: rgb(255, 124, 124);
+    --bg-history: rgba(219, 217, 217,0.2)
+}
+/* element styling  */
+body,html{
+    padding: 0;
+    box-sizing: border-box;
+    height: 100%;
+    background-color: black;
+    font-family: var(--font);
+    font-stretch: ultra-expanded;
+}
+button{
+    background-color: inherit;
+    border: none;
+    padding: 0;
+}
+select{
+    background-color: inherit;
+    border: none;
+}
+main{
+    padding: var(--space);
+    display: grid;
+    grid-template-rows: 1fr repeat(3, minmax(auto, 40px)) 3fr;
+    height: 50%;
+    width: 350px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: var(--bg);
+}
+/* display section  */
+.display{
+    text-align: right;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+.display > h1{
+    margin: 0 var(--space);
+    font-size: -webkit-xxx-large;
+}
+/* degree and function expression section  */
+.deg > div{
+    display: flex;
+    gap: 10%;
+    text-align: center;
+}
+.deg p{
+    margin: var(--space);
+    font-size: small;
+    font-weight: 600;
+}
+/* memory operation  */
+.memory-operation{
+    margin: auto 0;
+}
+.memory-operation > div{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+}
+.memory-operation button{
+    font-weight: 600;
+}
+.memory-operation button:hover{
+    background-color: white;
+}
+.light{
+    color: var(--font-light);
+}
+/* trignometric functions, floor and ceil function section  */
+.functions{
+    display: flex;
+    justify-content: space-around;
+    gap: var(--space);
+}
+.functions > div{
+    display: flex;
+}
+.functions > div > select:hover, #history:hover{
+    background-color: #fff;
+}   
+.functions img{
+    width: 20px;
+    height: 20px;
+    margin: auto;
+}
+#history{
+    padding: var(--space);
+}
+
+/* key operation  */
+.keys{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    grid-template-rows: repeat(7,1fr);
+    gap: 2px;
+}
+.btn{
+    background-color: var(--bg-btn);
+}
+.btn:hover, .numbers:hover{
+    background-color: inherit;
+}
+.del:hover{
+    background-color: var(--danger);
+}
+.numbers{
+    background-color: white;
+    font-weight: bold;
+    font-size: large;
+}
+#calculate{
+    background-color: var(--lightblue)
+}
+#calculate:hover{
+    background-color: var(--lightblue-hover)
+}
+
+/* history  section  */
+.history{
+    grid-column: 1/5;
+    grid-row: 1/8;
+    background-color: var(--bg-history);
+    display: none;
+    height: 260px;
+    overflow: auto;
+}
+#history_list{
+    list-style: square;
+    color: #333;
+    font-size: 14px;
+}
+
+/* reponsiveness  */
+@media only screen and (max-width : 350px) {
+    main{
+        width: 320px;
+        padding: var(--extra-space);
+    }
+}
