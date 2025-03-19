@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "start": "(npx parcel ./index.html) & npx parcel watch ./index.html"
+  },
+  "devDependencies": {
+    "parcel": "^2.14.1"
+  }
+}
