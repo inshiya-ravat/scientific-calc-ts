@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "(npx parcel ./index.html)",
+    "start": "parcel ./index.html",
     "build": "parcel build ./index.html --public-url ./",
     "lint": "eslint --ext .js,.ts ."
   },

@@ -5,21 +5,23 @@ import {
   MEMORY_EMPTY,
   ONLY_DIGITS,
   MEMORY_KEY,
-} from "./constant.js";
+} from "./constant";
 import {
   $,
   setLocalStorage,
   getLocalStorage,
   removeFromLocalStorage,
   updateNodeList,
-} from "./utils.js";
-import { setExpression } from "./index.js";
+} from "./utils";
+import { setExpression } from "./index";
 
 /**
  * @description element for memory operation buttons.
  */
-const memoryOperationElement = document.getElementById("memory-op")!;
-memoryOperationElement.addEventListener("click", handleMemoryOperation);
+const memoryOperationElement = document.getElementById("memory-op");
+if (memoryOperationElement) {
+  memoryOperationElement.addEventListener("click", handleMemoryOperation);
+}
 
 /**
  * @description list of nodes having light as classname.
@@ -50,7 +52,6 @@ function handleMemoryOperation(e: Event) {
       case MEMORY_OPERATION.memoryClear:
         if (getLocalStorage(MEMORY_KEY) != null) {
           removeFromLocalStorage(MEMORY_KEY);
-          const nodeList:NodeListOf<HTMLElement> = document.querySelectorAll(".light");
           for (const node of nodeList) {
             $(node).css("color", "rgb(199, 198, 198)");
           }
@@ -61,7 +62,10 @@ function handleMemoryOperation(e: Event) {
       case MEMORY_OPERATION.memoryRead:
         if (getLocalStorage(MEMORY_KEY) != null) {
           setDisplayScreenContent(localStorage.getItem(MEMORY_KEY)!);
-          setExpression(getDisplayScreenContent());
+          const displayContent = getDisplayScreenContent();
+          if (displayContent) {
+            setExpression(displayContent);
+          }
         } else {
           alert(MEMORY_EMPTY);
         }
@@ -70,8 +74,10 @@ function handleMemoryOperation(e: Event) {
         if (getLocalStorage(MEMORY_KEY) != null) {
           setLocalStorage(
             MEMORY_KEY,
-            (Number(getDisplayScreenContent()) +
-              Number(getLocalStorage(MEMORY_KEY))).toString()
+            (
+              Number(getDisplayScreenContent()) +
+              Number(getLocalStorage(MEMORY_KEY))
+            ).toString()
           );
         } else {
           alert(MEMORY_EMPTY);
@@ -81,20 +87,27 @@ function handleMemoryOperation(e: Event) {
         if (getLocalStorage(MEMORY_KEY) != null) {
           setLocalStorage(
             MEMORY_KEY,
-            (Number(getLocalStorage(MEMORY_KEY)) - Number(getDisplayScreenContent())).toString()
+            (
+              Number(getLocalStorage(MEMORY_KEY)) -
+              Number(getDisplayScreenContent())
+            ).toString()
           );
         } else {
           alert(MEMORY_EMPTY);
         }
         break;
-      case MEMORY_OPERATION.memorySave:
-        if (getDisplayScreenContent().match(/^\d+$/)) {
-          setLocalStorage(MEMORY_KEY, getDisplayScreenContent());
-          updateNodeList(nodeList, "color", "black");
-        } else {
-          alert(ONLY_DIGITS);
+      case MEMORY_OPERATION.memorySave: {
+        const displayContent = getDisplayScreenContent();
+        if (displayContent) {
+          if (displayContent.match(/^\d+$/)) {
+            setLocalStorage(MEMORY_KEY, displayContent);
+            updateNodeList(nodeList, "color", "black");
+          } else {
+            alert(ONLY_DIGITS);
+          }
         }
         break;
+      }
     }
   }
 }

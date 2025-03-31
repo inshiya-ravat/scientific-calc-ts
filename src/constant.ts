@@ -79,32 +79,43 @@ export const HISTORY:string[] = []
 /**
  * @description - the display screen element
  */
-const DISPLAY_SCREEN = document.getElementById('ans')!
+const DISPLAY_SCREEN = document.getElementById('ans')
 
 /**
  * @description - gets the current content of the display screen.
  */
-export function getDisplayScreenContent():string{
-    return DISPLAY_SCREEN.textContent!
+export function getDisplayScreenContent():string|undefined{
+    if(DISPLAY_SCREEN){
+        if(DISPLAY_SCREEN.textContent){
+            return DISPLAY_SCREEN.textContent;
+        }
+    }
 }
 
 /**
  * @description appends a string to the display screen content.
  */
 export function setDisplayScreenContent(str:string){
-    DISPLAY_SCREEN.textContent += str
+    if(DISPLAY_SCREEN?.textContent){
+        DISPLAY_SCREEN.textContent += str
+    }
 }
+   
 
 /**
  * @description replaces the entire content of the display screen with a new string.
  */
 export function replaceDisplayScreenContent(str:string){
-    DISPLAY_SCREEN.textContent = str
+    if(DISPLAY_SCREEN?.textContent){
+        DISPLAY_SCREEN.textContent = str
+    }  
 }
 
 /**
  * @description gets the display screen element.
  */
 export function getDisplayScreen(){
-    return DISPLAY_SCREEN
+    if(DISPLAY_SCREEN){
+        return DISPLAY_SCREEN
+    }
 }
