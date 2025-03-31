@@ -2,7 +2,7 @@
   "scripts": {
     "start": "parcel ./index.html",
     "build": "parcel build ./index.html --public-url ./",
-    "lint": "eslint --ext .js,.ts ."
+    "lint": "eslint src"
   },
   "devDependencies": {
     "@eslint/js": "^9.22.0",
