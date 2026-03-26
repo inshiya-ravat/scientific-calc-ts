@@ -69,7 +69,7 @@ export function updateExpressionAndDisplay(
  * @description clears the display screen and resets the mathematical expression.
  */
 export function clearScreen() {
-  replaceDisplayScreenContent("");
+  replaceDisplayScreenContent(" ");
   const displaycontent = getDisplayScreen();
   if(displaycontent){
     $(displaycontent)
@@ -83,6 +83,7 @@ export function clearScreen() {
  * @description evaluates and calculates the mathematical expression, updateing the dispaly screen.
  */
 export function calculateResult() {
+  console.log("yes called")
   const removeZeroes = getExpression().replace(/\b0+(\d+)/g, "$1");
   const result: string = eval(removeZeroes).toFixed(2);
   replaceDisplayScreenContent(result.toString());
